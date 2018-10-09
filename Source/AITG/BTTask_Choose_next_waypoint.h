@@ -19,7 +19,5 @@ public:
 	
 protected:
 	UPROPERTY(EditAnywhere, Category = "Blackboard")
-		struct FBlackboardKeySelector WaypointIndexKey;
-	UPROPERTY(EditAnywhere, Category = "Blackboard")
-		struct FBlackboardKeySelector WaypointKey;
+	struct FBlackboardKeySelector WaypointKey;
 };
