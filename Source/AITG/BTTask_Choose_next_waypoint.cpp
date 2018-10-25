@@ -18,8 +18,12 @@ EBTNodeResult::Type UBTTask_Choose_next_waypoint::ExecuteTask(UBehaviorTreeCompo
 		UPatrolRouteComponent* PatrolRouteComp = Cast<UPatrolRouteComponent>(AIC->GetPawn()->GetComponentByClass(UPatrolRouteComponent::StaticClass()));
 		if (PatrolRouteComp)
 		{
-			BlackBoardComp->SetValueAsObject(WaypointKey.SelectedKeyName, PatrolRouteComp->GetNextWayPoint());
-			return EBTNodeResult::Succeeded;
+			AActor* NextWayPoint = PatrolRouteComp->GetNextWayPoint();
+			if(NextWayPoint)
+			{ 
+				BlackBoardComp->SetValueAsObject(WaypointKey.SelectedKeyName, PatrolRouteComp->GetNextWayPoint());
+				return EBTNodeResult::Succeeded;
+			}
 		}
 	}
 	return EBTNodeResult::Failed;

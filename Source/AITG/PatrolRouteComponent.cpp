@@ -14,9 +14,13 @@ UPatrolRouteComponent::UPatrolRouteComponent()
 }
 
 AActor* UPatrolRouteComponent::GetNextWayPoint()
-{
-	AActor* ReturnActor = Waypoints[NextWayPointIndex];
-	NextWayPointIndex = (NextWayPointIndex + 1) % (Waypoints.Num());
-	return ReturnActor;
+{	
+	if (Waypoints.Num()>0)
+	{
+		AActor* ReturnActor = Waypoints[NextWayPointIndex];
+		NextWayPointIndex = (NextWayPointIndex + 1) % (Waypoints.Num());
+		return ReturnActor;
+	}
+	return nullptr;
 }
 
